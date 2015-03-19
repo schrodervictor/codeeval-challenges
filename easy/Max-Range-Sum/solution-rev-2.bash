@@ -5,6 +5,7 @@ max_gain_for_n_days() {
     local DAYS=$1
     local MAX_GAIN=0
     local SUM=0
+    local SUBPERIOD
 
     # Shift the first argument (days)
     shift
