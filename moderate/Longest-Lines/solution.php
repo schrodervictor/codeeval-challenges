@@ -2,8 +2,8 @@
 // Open the file
 $fh = fopen($argv[1], "r");
 
-// Set a counter, only to detect the first line
-$i = 0;
+// Get the first line, with the number of lines needed for the output
+$numLines = (int)fgets($fh);
 
 // Initialize an empty array to store the sentences
 $sentences = array();
@@ -11,17 +11,8 @@ $sentences = array();
 // Loop through the lines
 while (($line = fgets($fh)) !== false) {
 
-    // If it's the first line, store the number of
-    // lines we need for the output
-    if (0 === (int)$i) {
-        $numLines = (int)$line;
-        // Increment the counter to not pass here again
-        $i++;
-        continue;
-    }
-
-    // For all the other lines, just store the sentence in
-    // the array, removing the line break at the end
+    // Store each sentence in the array,
+    // removing the line break at the end
     $sentences[] = trim($line);
 }
 
